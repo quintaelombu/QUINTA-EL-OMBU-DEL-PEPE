@@ -1,1 +1,1 @@
-{"buildCommand": "", "outputDirectory": "public", "framework": null, "installCommand": ""}
+{"buildCommand":"","outputDirectory":"public","framework":null,"installCommand":"","headers":[{"source":"/(.*).html","headers":[{"key":"Content-Type","value":"text/html; charset=utf-8"}]}]}
