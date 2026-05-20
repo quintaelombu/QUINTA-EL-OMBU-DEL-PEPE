@@ -1,273 +1,290 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Quinta El Ombú del Pepe</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Nunito',sans-serif;background:#fdf6ec;color:#2c2c2c;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s}
-nav.scrolled{background:rgba(253,246,236,.96);backdrop-filter:blur(8px);box-shadow:0 2px 20px rgba(0,0,0,.08)}
-.nav-logo img{height:52px;width:auto}
-.nav-links{display:flex;gap:1.8rem;list-style:none}
-.nav-links a{color:#2c2c2c;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:#3a6b35}
-@media(max-width:640px){.nav-links{display:none}}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,246,236,.15) 0%,rgba(253,246,236,.55) 100%),url('/galeria/3.jpg') center/cover no-repeat;animation:slowzoom 18s ease-in-out infinite alternate}
-@keyframes slowzoom{from{transform:scale(1)}to{transform:scale(1.07)}}
-.hero-content{position:relative;text-align:center;padding:2rem 1.5rem;animation:fadeup 1.2s ease both}
-@keyframes fadeup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.hero-logo{width:200px;margin:0 auto 1.8rem;display:block;filter:drop-shadow(0 2px 16px rgba(0,0,0,.25))}
-.hero-lugar{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:#3a6b35;font-weight:600;margin-bottom:1rem}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,7vw,4.5rem);font-weight:400;line-height:1.1;color:#2c2c2c;text-shadow:0 1px 12px rgba(255,255,255,.6);margin-bottom:1.2rem}
-.hero h1 em{font-style:italic;color:#3a6b35}
-.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.25rem);color:#8b5e3c;max-width:500px;margin:0 auto 2.5rem;line-height:1.65}
-.hero-cta{display:inline-block;padding:.95rem 2.8rem;background:#3a6b35;color:white;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;border-radius:50px;box-shadow:0 4px 20px rgba(58,107,53,.35);transition:all .3s}
-.hero-cta:hover{background:#5a9e52;transform:translateY(-2px)}
-section{padding:5.5rem 1.5rem}
-.sec-label{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#5a9e52;font-weight:600;margin-bottom:.6rem}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:400;line-height:1.15;color:#2c2c2c;margin-bottom:1rem}
-.sec-title em{font-style:italic;color:#3a6b35}
-.divider{width:50px;height:3px;border-radius:2px;background:#c8922a;margin:1.2rem auto}
-.intro{background:#fff;text-align:center}
-.intro-inner{max-width:780px;margin:0 auto}
-.intro p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.05rem,2.3vw,1.35rem);line-height:1.8;color:#8b5e3c}
-.intro-tags{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:2rem}
-.tag{background:#e8f4e5;color:#3a6b35;padding:.4rem 1.1rem;border-radius:50px;font-size:.82rem;font-weight:600}
-.features{background:#f0e6d0}
-.features-inner{max-width:1100px;margin:0 auto;text-align:center}
-.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3rem}
-.feat-card{background:#fff;padding:2rem 1.5rem;border-radius:16px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}
-.feat-card:hover{transform:translateY(-5px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
-.feat-icon{font-size:2.2rem;margin-bottom:.9rem}
-.feat-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:#3a6b35;margin-bottom:.5rem}
-.feat-card p{font-size:.85rem;color:#6b6b6b;line-height:1.6}
-.galeria{background:#fff}
-.galeria-inner{max-width:1200px;margin:0 auto}
-.galeria-header{text-align:center;margin-bottom:2.5rem}
-.galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-@media(max-width:600px){.galeria-grid{grid-template-columns:repeat(2,1fr)}}
-.gal-item{aspect-ratio:3/4;overflow:hidden;border-radius:10px;cursor:pointer;position:relative}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.gal-item:hover img{transform:scale(1.07)}
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;align-items:center;justify-content:center}
-.lightbox.active{display:flex}
-.lightbox img{max-width:92vw;max-height:90vh;border-radius:8px}
-.lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:white;font-size:2rem;cursor:pointer}
-.precios{background:#e8f4e5}
-.precios-inner{max-width:1100px;margin:0 auto;text-align:center}
-.precios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;text-align:left;margin-top:2rem}
-.precio-card{background:#fff;border-radius:20px;padding:2.2rem 2rem;box-shadow:0 4px 24px rgba(0,0,0,.07);transition:transform .3s,box-shadow .3s;position:relative}
-.precio-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
-.precio-card.top{border:2.5px solid #3a6b35}
-.top-badge{position:absolute;top:1.2rem;right:1.2rem;background:#3a6b35;color:white;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:50px}
-.precio-card h3{font-family:'Playfair Display',serif;font-size:1.45rem;color:#2c2c2c;margin-bottom:.3rem}
-.precio-card .desc{font-size:.82rem;color:#6b6b6b;margin-bottom:1rem}
-.precio-amount{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:600;color:#3a6b35;line-height:1;margin-bottom:1.4rem}
-.precio-amount sup{font-size:1.1rem;vertical-align:super}
-.precio-items{list-style:none;margin-bottom:1.8rem}
-.precio-items li{font-size:.84rem;color:#6b6b6b;padding:.45rem 0;border-bottom:1px solid #f0e6d0;display:flex;gap:.6rem;align-items:flex-start}
-.precio-items li::before{content:'✓';color:#5a9e52;font-weight:700;flex-shrink:0}
-.btn-wa{display:block;width:100%;text-align:center;padding:.9rem;background:#3a6b35;color:white;text-decoration:none;border-radius:50px;font-weight:600;font-size:.84rem;transition:background .3s}
-.btn-wa:hover{background:#5a9e52}
-.reservas{background:#fff}
-.reservas-inner{max-width:680px;margin:0 auto;text-align:center}
-.reservas-inner p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.3vw,1.25rem);color:#8b5e3c;line-height:1.75;margin-bottom:2.5rem}
-.btn-wa-grande{display:inline-flex;align-items:center;gap:.7rem;padding:1.1rem 3rem;background:#25D366;color:white;text-decoration:none;border-radius:50px;font-size:1rem;font-weight:700;box-shadow:0 4px 24px rgba(37,211,102,.35);transition:all .3s}
-.btn-wa-grande:hover{background:#1ebe5d;transform:translateY(-2px)}
-.reservas-nota{margin-top:1.2rem;font-size:.78rem;color:#6b6b6b;letter-spacing:.12em;text-transform:uppercase}
-.mapa{background:#f0e6d0}
-.mapa-inner{max-width:860px;margin:0 auto;text-align:center}
-.mapa-inner p{font-size:.92rem;color:#6b6b6b;margin:.8rem 0 1.8rem;line-height:1.6}
-.mapa-frame{width:100%;height:320px;border:none;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
-.btn-maps{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;padding:.75rem 2rem;border:2px solid #3a6b35;color:#3a6b35;text-decoration:none;border-radius:50px;font-size:.82rem;font-weight:600;transition:all .3s}
-.btn-maps:hover{background:#3a6b35;color:white}
-.opiniones{background:#fff;text-align:center}
-.opiniones-inner{max-width:660px;margin:0 auto}
-.opiniones-inner p{font-size:.92rem;color:#6b6b6b;line-height:1.7;margin:.8rem 0 2rem}
-.op-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-op{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;border-radius:50px;font-size:.84rem;font-weight:600;text-decoration:none;transition:all .3s}
-.btn-op.verde{background:#e8f4e5;color:#3a6b35}
-.btn-op.verde:hover{background:#3a6b35;color:white}
-.btn-op.dorado{background:#fdf3e3;color:#c8922a}
-.btn-op.dorado:hover{background:#c8922a;color:white}
-footer{background:#3a6b35;color:rgba(255,255,255,.9);padding:3rem 1.5rem;text-align:center}
-footer img{height:70px;width:auto;margin-bottom:1.2rem}
-footer p{font-size:.84rem;line-height:1.8;color:rgba(255,255,255,.75)}
-footer a{color:rgba(255,255,255,.9);text-decoration:none}
-.footer-social{display:flex;gap:1.5rem;justify-content:center;margin:1.2rem 0;flex-wrap:wrap}
-.footer-social a{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.35);padding:.4rem 1.2rem;border-radius:50px;transition:all .2s}
-.footer-social a:hover{background:rgba(255,255,255,.15);border-color:white;text-decoration:none}
-.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:62px;height:62px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;transition:transform .3s}
-.wa-float:hover{transform:scale(1.1)}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    body {background-color: #fcf4e7}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #212121; -webkit-text-stroke: #212121}
+    span.s1 {font-kerning: none}
+  </style>
 </head>
 <body>
-<nav id="navbar">
-  <div class="nav-logo"><img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe"/></div>
-  <ul class="nav-links">
-    <li><a href="#galeria">Galería</a></li>
-    <li><a href="#precios">Precios</a></li>
-    <li><a href="#reservas">Reservas</a></li>
-    <li><a href="#como-llegar">Cómo llegar</a></li>
-  </ul>
-</nav>
-<section class="hero" id="inicio">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe" class="hero-logo"/>
-    <p class="hero-lugar">Pocito · San Juan · Argentina</p>
-    <h1>El mejor lugar para<br><em>tus mejores momentos</em></h1>
-    <p class="hero-sub">Naturaleza, pileta, salón y magia en el corazón de San Juan</p>
-    <a href="#reservas" class="hero-cta">Consultar disponibilidad</a>
-  </div>
-</section>
-<section class="intro">
-  <div class="intro-inner reveal">
-    <p class="sec-label" style="text-align:center">Bienvenidos</p>
-    <div class="divider"></div>
-    <p>Imaginá un refugio donde el susurro de los árboles te envuelve, donde el aroma del pasto recién cortado se mezcla con risas. Un rincón donde la naturaleza te abraza bajo la copa de un ombú centenario.</p>
-    <div class="intro-tags">
-      <span class="tag">🏊 Pileta</span>
-      <span class="tag">🏛️ Salón climatizado</span>
-      <span class="tag">🌳 Parque arbolado</span>
-      <span class="tag">🛏️ Alojamiento</span>
-      <span class="tag">🍽️ Vajilla incluida</span>
-      <span class="tag">👥 Hasta 60 personas</span>
-    </div>
-  </div>
-</section>
-<section class="features">
-  <div class="features-inner">
-    <p class="sec-label reveal">Lo que incluye</p>
-    <h2 class="sec-title reveal">Todo lo que necesitás,<br><em>en un solo lugar</em></h2>
-    <div class="features-grid">
-      <div class="feat-card reveal"><div class="feat-icon">🏊</div><h3>Pileta</h3><p>Refrescate rodeados de verde. Ideal para los días sanjuaninos.</p></div>
-      <div class="feat-card reveal"><div class="feat-icon">🏛️</div><h3>Salón climatizado</h3><p>Capacidad para hasta 50 personas con aire acondicionado, luces y sonido.</p></div>
-      <div class="feat-card reveal"><div class="feat-icon">🌳</div><h3>Parque arbolado</h3><p>Ombúes centenarios que crean un microclima único y natural.</p></div>
-      <div class="feat-card reveal"><div class="feat-icon">🍽️</div><h3>Vajilla completa</h3><p>Vajilla para hasta 50 personas. Vení a disfrutar, nosotros ponemos el resto.</p></div>
-      <div class="feat-card reveal"><div class="feat-icon">🛏️</div><h3>Alojamiento</h3><p>Dormí en la quinta. Capacidad para hasta 9 personas, ropa de cama incluida.</p></div>
-      <div class="feat-card reveal"><div class="feat-icon">📍</div><h3>Fácil acceso</h3><p>Calle 9 y Callejón Vita, Pocito. A minutos del centro de San Juan.</p></div>
-    </div>
-  </div>
-</section>
-<section class="galeria" id="galeria">
-  <div class="galeria-inner">
-    <div class="galeria-header reveal">
-      <p class="sec-label">Galería</p>
-      <h2 class="sec-title">La Quinta <em>en imágenes</em></h2>
-      <p style="color:#6b6b6b;font-size:.88rem">Tocá una foto para verla en detalle</p>
-    </div>
-    <div class="galeria-grid" id="galeriaGrid"></div>
-  </div>
-</section>
-<section class="precios" id="precios">
-  <div class="precios-inner">
-    <p class="sec-label reveal">Tarifas</p>
-    <h2 class="sec-title reveal">Elegí tu <em>experiencia</em></h2>
-    <p style="color:#6b6b6b;font-size:.88rem" class="reveal">Precios por día completo · Excedente de 50 personas: $5.000 por persona adicional</p>
-    <div class="precios-grid">
-      <div class="precio-card reveal">
-        <h3>Opción Evento</h3><p class="desc">Uso exclusivo como evento, sin alojamiento</p>
-        <div class="precio-amount"><sup>$</sup>250.000</div>
-        <ul class="precio-items">
-          <li>Horario: 13:00 a 23:00 o 17:00 a 05:00 (10 hs)</li>
-          <li>Salón climatizado hasta 50 personas</li>
-          <li>Pileta y parque arbolado</li>
-          <li>Luces y sonido incluidos (sin DJ)</li>
-          <li>Vajilla opcional +$50.000</li>
-        </ul>
-        <a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Opci%C3%B3n%20Evento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
-      </div>
-      <div class="precio-card top reveal">
-        <div class="top-badge">Más elegido</div>
-        <h3>Evento + Alojamiento</h3><p class="desc">Fiesta y quédense a dormir</p>
-        <div class="precio-amount"><sup>$</sup>450.000</div>
-        <ul class="precio-items">
-          <li>Todo lo incluido en Opción Evento</li>
-          <li>Alojamiento para hasta 9 personas</li>
-          <li>Ropa de cama y vajilla para 9 incluidas</li>
-          <li>Check-in: 13:00 hs · Check-out: 10:00 hs</li>
-        </ul>
-        <a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Evento%20%2B%20Alojamiento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
-      </div>
-      <div class="precio-card reveal">
-        <h3>Alojamiento Familiar</h3><p class="desc">Descanso en familia, sin evento formal</p>
-        <div class="precio-amount"><sup>$</sup>300.000</div>
-        <ul class="precio-items">
-          <li>Alojamiento para hasta 9 personas</li>
-          <li>Hasta 30 invitados a pasar el día</li>
-          <li>Vajilla incluida para 9 personas</li>
-          <li>Check-in: 13:00 hs · Check-out: 10:00 hs</li>
-        </ul>
-        <a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Alojamiento%20Familiar%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="reservas" id="reservas">
-  <div class="reservas-inner reveal">
-    <p class="sec-label">Reservas</p>
-    <h2 class="sec-title">¿Cuándo querés <em>venir?</em></h2>
-    <p>Escribinos por WhatsApp para consultar la disponibilidad de tu fecha. Te respondemos a la brevedad.</p>
-    <a href="https://wa.me/542645064711?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa-grande">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.852L.057 23.5a.5.5 0 0 0 .623.607l5.797-1.522A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.52-5.16-1.427l-.36-.214-3.43.9.916-3.35-.235-.375A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      Consultar disponibilidad
-    </a>
-    <p class="reservas-nota">Consultá también por promociones</p>
-  </div>
-</section>
-<section class="mapa" id="como-llegar">
-  <div class="mapa-inner reveal">
-    <p class="sec-label">Cómo llegar</p>
-    <h2 class="sec-title">Encontranos <em>fácil</em></h2>
-    <p>Calle 9 y Callejón Vita, Pocito, San Juan.</p>
-    <iframe class="mapa-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348!2d-68.517372!3d-31.646320!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDM4JzQ3LjciUyA2OMKwMzEnMDIuNSJX!5e0!3m2!1ses!2sar!4v1" allowfullscreen loading="lazy"></iframe>
-    <br><a href="https://maps.google.com/?q=-31.646320,-68.517372" target="_blank" class="btn-maps">📍 Abrir en Google Maps</a>
-  </div>
-</section>
-<section class="opiniones">
-  <div class="opiniones-inner reveal">
-    <p class="sec-label">Testimonios</p>
-    <h2 class="sec-title">Lo que dicen nuestros <em>huéspedes</em></h2>
-    <p>Tu experiencia ayuda a otras familias a elegir Quinta El Ombú del Pepe.</p>
-    <div class="op-btns">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfTKb0QluNyyBhWD-pdaUkFMLimtFXq-pjK474SHLQchyoyAw/viewform" target="_blank" class="btn-op verde">✍️ Dejar mi opinión</a>
-      <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTjZj6rM8TESloNOLLCbp5C_TWTpnSuiein7sgTKaklvOG6BaXT3G0HuAY1zIQxF85kUgw_Wvtx_4BV/pubhtml?gid=111143393&single=true" target="_blank" class="btn-op dorado">⭐ Ver opiniones</a>
-    </div>
-  </div>
-</section>
-<footer>
-  <img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe"/>
-  <p>Calle 9 y Callejón Vita · Pocito · San Juan · Argentina</p>
-  <p>📞 <a href="https://wa.me/542645064711">+54 264 506-4711</a></p>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/quinta_el_ombu" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/share/1DSutPTNYe/" target="_blank">Facebook</a>
-  </div>
-  <p style="font-size:.72rem;margin-top:1rem;opacity:.5">© 2025 Quinta El Ombú del Pepe</p>
-</footer>
-<a href="https://wa.me/542645064711?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="wa-float">
-  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.852L.057 23.5a.5.5 0 0 0 .623.607l5.797-1.522A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.52-5.16-1.427l-.36-.214-3.43.9.916-3.35-.235-.375A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-</a>
-<div class="lightbox" id="lightbox" onclick="closeLB()">
-  <button class="lb-close" onclick="closeLB()">✕</button>
-  <img id="lbImg" src="" alt=""/>
-</div>
-<script>
-window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
-const grid=document.getElementById('galeriaGrid');
-for(let i=1;i<=23;i++){const d=document.createElement('div');d.className='gal-item';const s=`/galeria/${i}.jpg`;d.innerHTML=`<img src="${s}" alt="foto ${i}" loading="lazy" onclick="openLB('${s}')"/>`;grid.appendChild(d)}
-function openLB(s){document.getElementById('lbImg').src=s;document.getElementById('lightbox').classList.add('active')}
-function closeLB(){document.getElementById('lightbox').classList.remove('active')}
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="es"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta charset="UTF-8"/&gt;</span></p>
+<p class="p1"><span class="s1">&lt;meta name="viewport" content="width=device-width,initial-scale=1.0"/&gt;</span></p>
+<p class="p1"><span class="s1">&lt;title&gt;Quinta El Ombú del Pepe&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1">&lt;link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;family=Nunito:wght@300;400;600&amp;display=swap" rel="stylesheet"/&gt;</span></p>
+<p class="p1"><span class="s1">&lt;style&gt;</span></p>
+<p class="p1"><span class="s1">*{margin:0;padding:0;box-sizing:border-box}</span></p>
+<p class="p1"><span class="s1">html{scroll-behavior:smooth}</span></p>
+<p class="p1"><span class="s1">body{font-family:'Nunito',sans-serif;background:#fdf6ec;color:#2c2c2c;overflow-x:hidden}</span></p>
+<p class="p1"><span class="s1">nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s}</span></p>
+<p class="p1"><span class="s1">nav.scrolled{background:rgba(253,246,236,.96);backdrop-filter:blur(8px);box-shadow:0 2px 20px rgba(0,0,0,.08)}</span></p>
+<p class="p1"><span class="s1">.nav-logo img{height:52px;width:auto}</span></p>
+<p class="p1"><span class="s1">.nav-links{display:flex;gap:1.8rem;list-style:none}</span></p>
+<p class="p1"><span class="s1">.nav-links a{color:#2c2c2c;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}</span></p>
+<p class="p1"><span class="s1">.nav-links a:hover{color:#3a6b35}</span></p>
+<p class="p1"><span class="s1">@media(max-width:640px){.nav-links{display:none}}</span></p>
+<p class="p1"><span class="s1">.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}</span></p>
+<p class="p1"><span class="s1">.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,246,236,.1) 0%,rgba(253,246,236,.5) 100%),url('/portada.jpg') center/cover no-repeat;animation:slowzoom 18s ease-in-out infinite alternate}</span></p>
+<p class="p1"><span class="s1">@keyframes slowzoom{from{transform:scale(1)}to{transform:scale(1.07)}}</span></p>
+<p class="p1"><span class="s1">.hero-content{position:relative;text-align:center;padding:2rem 1.5rem;animation:fadeup 1.2s ease both}</span></p>
+<p class="p1"><span class="s1">@keyframes fadeup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}</span></p>
+<p class="p1"><span class="s1">.hero-logo{width:260px;margin:0 auto 1.8rem;display:block;filter:drop-shadow(0 2px 20px rgba(0,0,0,.3))}</span></p>
+<p class="p1"><span class="s1">.hero-lugar{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:#3a6b35;font-weight:600;margin-bottom:1rem}</span></p>
+<p class="p1"><span class="s1">.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,7vw,4.5rem);font-weight:400;line-height:1.1;color:#2c2c2c;text-shadow:0 1px 12px rgba(255,255,255,.8);margin-bottom:1.2rem}</span></p>
+<p class="p1"><span class="s1">.hero h1 em{font-style:italic;color:#3a6b35}</span></p>
+<p class="p1"><span class="s1">.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.25rem);color:#5a3e28;max-width:500px;margin:0 auto 2.5rem;line-height:1.65;text-shadow:0 1px 8px rgba(255,255,255,.7)}</span></p>
+<p class="p1"><span class="s1">.hero-cta{display:inline-block;padding:.95rem 2.8rem;background:#3a6b35;color:white;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;border-radius:50px;box-shadow:0 4px 20px rgba(58,107,53,.35);transition:all .3s}</span></p>
+<p class="p1"><span class="s1">.hero-cta:hover{background:#5a9e52;transform:translateY(-2px)}</span></p>
+<p class="p1"><span class="s1">section{padding:5.5rem 1.5rem}</span></p>
+<p class="p1"><span class="s1">.sec-label{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#5a9e52;font-weight:600;margin-bottom:.6rem}</span></p>
+<p class="p1"><span class="s1">.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:400;line-height:1.15;color:#2c2c2c;margin-bottom:1rem}</span></p>
+<p class="p1"><span class="s1">.sec-title em{font-style:italic;color:#3a6b35}</span></p>
+<p class="p1"><span class="s1">.divider{width:50px;height:3px;border-radius:2px;background:#c8922a;margin:1.2rem auto}</span></p>
+<p class="p1"><span class="s1">.intro{background:#fff;text-align:center}</span></p>
+<p class="p1"><span class="s1">.intro-inner{max-width:780px;margin:0 auto}</span></p>
+<p class="p1"><span class="s1">.intro p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.05rem,2.3vw,1.35rem);line-height:1.8;color:#8b5e3c}</span></p>
+<p class="p1"><span class="s1">.intro-tags{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center;margin-top:2rem}</span></p>
+<p class="p1"><span class="s1">.tag{background:#e8f4e5;color:#3a6b35;padding:.4rem 1.1rem;border-radius:50px;font-size:.82rem;font-weight:600}</span></p>
+<p class="p1"><span class="s1">.features{background:#f0e6d0}</span></p>
+<p class="p1"><span class="s1">.features-inner{max-width:1100px;margin:0 auto;text-align:center}</span></p>
+<p class="p1"><span class="s1">.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:3rem}</span></p>
+<p class="p1"><span class="s1">.feat-card{background:#fff;padding:2rem 1.5rem;border-radius:16px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}</span></p>
+<p class="p1"><span class="s1">.feat-card:hover{transform:translateY(-5px);box-shadow:0 8px 32px rgba(0,0,0,.1)}</span></p>
+<p class="p1"><span class="s1">.feat-icon{font-size:2.2rem;margin-bottom:.9rem}</span></p>
+<p class="p1"><span class="s1">.feat-card h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:#3a6b35;margin-bottom:.5rem}</span></p>
+<p class="p1"><span class="s1">.feat-card p{font-size:.85rem;color:#6b6b6b;line-height:1.6}</span></p>
+<p class="p1"><span class="s1">.galeria{background:#fff}</span></p>
+<p class="p1"><span class="s1">.galeria-inner{max-width:1200px;margin:0 auto}</span></p>
+<p class="p1"><span class="s1">.galeria-header{text-align:center;margin-bottom:2.5rem}</span></p>
+<p class="p1"><span class="s1">.galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}</span></p>
+<p class="p1"><span class="s1">@media(max-width:600px){.galeria-grid{grid-template-columns:repeat(2,1fr)}}</span></p>
+<p class="p1"><span class="s1">.gal-item{aspect-ratio:3/4;overflow:hidden;border-radius:10px;cursor:pointer;position:relative}</span></p>
+<p class="p1"><span class="s1">.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}</span></p>
+<p class="p1"><span class="s1">.gal-item:hover img{transform:scale(1.07)}</span></p>
+<p class="p1"><span class="s1">.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;align-items:center;justify-content:center}</span></p>
+<p class="p1"><span class="s1">.lightbox.active{display:flex}</span></p>
+<p class="p1"><span class="s1">.lightbox img{max-width:92vw;max-height:90vh;border-radius:8px}</span></p>
+<p class="p1"><span class="s1">.lb-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:white;font-size:2rem;cursor:pointer}</span></p>
+<p class="p1"><span class="s1">.precios{background:#e8f4e5}</span></p>
+<p class="p1"><span class="s1">.precios-inner{max-width:1100px;margin:0 auto;text-align:center}</span></p>
+<p class="p1"><span class="s1">.precios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;text-align:left;margin-top:2rem}</span></p>
+<p class="p1"><span class="s1">.precio-card{background:#fff;border-radius:20px;padding:2.2rem 2rem;box-shadow:0 4px 24px rgba(0,0,0,.07);transition:transform .3s,box-shadow .3s;position:relative}</span></p>
+<p class="p1"><span class="s1">.precio-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12)}</span></p>
+<p class="p1"><span class="s1">.precio-card.top{border:2.5px solid #3a6b35}</span></p>
+<p class="p1"><span class="s1">.top-badge{position:absolute;top:1.2rem;right:1.2rem;background:#3a6b35;color:white;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .7rem;border-radius:50px}</span></p>
+<p class="p1"><span class="s1">.precio-card h3{font-family:'Playfair Display',serif;font-size:1.45rem;color:#2c2c2c;margin-bottom:.3rem}</span></p>
+<p class="p1"><span class="s1">.precio-card .desc{font-size:.82rem;color:#6b6b6b;margin-bottom:1rem}</span></p>
+<p class="p1"><span class="s1">.precio-amount{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:600;color:#3a6b35;line-height:1;margin-bottom:1.4rem}</span></p>
+<p class="p1"><span class="s1">.precio-amount sup{font-size:1.1rem;vertical-align:super}</span></p>
+<p class="p1"><span class="s1">.precio-items{list-style:none;margin-bottom:1.8rem}</span></p>
+<p class="p1"><span class="s1">.precio-items li{font-size:.84rem;color:#6b6b6b;padding:.45rem 0;border-bottom:1px solid #f0e6d0;display:flex;gap:.6rem;align-items:flex-start}</span></p>
+<p class="p1"><span class="s1">.precio-items li::before{content:'✓';color:#5a9e52;font-weight:700;flex-shrink:0}</span></p>
+<p class="p1"><span class="s1">.btn-wa{display:block;width:100%;text-align:center;padding:.9rem;background:#3a6b35;color:white;text-decoration:none;border-radius:50px;font-weight:600;font-size:.84rem;transition:background .3s}</span></p>
+<p class="p1"><span class="s1">.btn-wa:hover{background:#5a9e52}</span></p>
+<p class="p1"><span class="s1">.reservas{background:#fff}</span></p>
+<p class="p1"><span class="s1">.reservas-inner{max-width:680px;margin:0 auto;text-align:center}</span></p>
+<p class="p1"><span class="s1">.reservas-inner p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.3vw,1.25rem);color:#8b5e3c;line-height:1.75;margin-bottom:2.5rem}</span></p>
+<p class="p1"><span class="s1">.btn-wa-grande{display:inline-flex;align-items:center;gap:.7rem;padding:1.1rem 3rem;background:#25D366;color:white;text-decoration:none;border-radius:50px;font-size:1rem;font-weight:700;box-shadow:0 4px 24px rgba(37,211,102,.35);transition:all .3s}</span></p>
+<p class="p1"><span class="s1">.btn-wa-grande:hover{background:#1ebe5d;transform:translateY(-2px)}</span></p>
+<p class="p1"><span class="s1">.reservas-nota{margin-top:1.2rem;font-size:.78rem;color:#6b6b6b;letter-spacing:.12em;text-transform:uppercase}</span></p>
+<p class="p1"><span class="s1">.mapa{background:#f0e6d0}</span></p>
+<p class="p1"><span class="s1">.mapa-inner{max-width:860px;margin:0 auto;text-align:center}</span></p>
+<p class="p1"><span class="s1">.mapa-inner p{font-size:.92rem;color:#6b6b6b;margin:.8rem 0 1.8rem;line-height:1.6}</span></p>
+<p class="p1"><span class="s1">.mapa-frame{width:100%;height:320px;border:none;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.1)}</span></p>
+<p class="p1"><span class="s1">.btn-maps{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;padding:.75rem 2rem;border:2px solid #3a6b35;color:#3a6b35;text-decoration:none;border-radius:50px;font-size:.82rem;font-weight:600;transition:all .3s}</span></p>
+<p class="p1"><span class="s1">.btn-maps:hover{background:#3a6b35;color:white}</span></p>
+<p class="p1"><span class="s1">.opiniones{background:#fff;text-align:center}</span></p>
+<p class="p1"><span class="s1">.opiniones-inner{max-width:660px;margin:0 auto}</span></p>
+<p class="p1"><span class="s1">.opiniones-inner p{font-size:.92rem;color:#6b6b6b;line-height:1.7;margin:.8rem 0 2rem}</span></p>
+<p class="p1"><span class="s1">.op-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}</span></p>
+<p class="p1"><span class="s1">.btn-op{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;border-radius:50px;font-size:.84rem;font-weight:600;text-decoration:none;transition:all .3s}</span></p>
+<p class="p1"><span class="s1">.btn-op.verde{background:#e8f4e5;color:#3a6b35}</span></p>
+<p class="p1"><span class="s1">.btn-op.verde:hover{background:#3a6b35;color:white}</span></p>
+<p class="p1"><span class="s1">.btn-op.dorado{background:#fdf3e3;color:#c8922a}</span></p>
+<p class="p1"><span class="s1">.btn-op.dorado:hover{background:#c8922a;color:white}</span></p>
+<p class="p1"><span class="s1">footer{background:#3a6b35;color:rgba(255,255,255,.9);padding:3rem 1.5rem;text-align:center}</span></p>
+<p class="p1"><span class="s1">footer img{height:70px;width:auto;margin-bottom:1.2rem}</span></p>
+<p class="p1"><span class="s1">footer p{font-size:.84rem;line-height:1.8;color:rgba(255,255,255,.75)}</span></p>
+<p class="p1"><span class="s1">footer a{color:rgba(255,255,255,.9);text-decoration:none}</span></p>
+<p class="p1"><span class="s1">.footer-social{display:flex;gap:1.5rem;justify-content:center;margin:1.2rem 0;flex-wrap:wrap}</span></p>
+<p class="p1"><span class="s1">.footer-social a{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.35);padding:.4rem 1.2rem;border-radius:50px;transition:all .2s}</span></p>
+<p class="p1"><span class="s1">.footer-social a:hover{background:rgba(255,255,255,.15);border-color:white;text-decoration:none}</span></p>
+<p class="p1"><span class="s1">.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:62px;height:62px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;transition:transform .3s}</span></p>
+<p class="p1"><span class="s1">.wa-float:hover{transform:scale(1.1)}</span></p>
+<p class="p1"><span class="s1">.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}</span></p>
+<p class="p1"><span class="s1">.reveal.visible{opacity:1;transform:translateY(0)}</span></p>
+<p class="p1"><span class="s1">&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;nav id="navbar"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="nav-logo"&gt;&lt;img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe"/&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;ul class="nav-links"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#galeria"&gt;Galería&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#precios"&gt;Precios&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#reservas"&gt;Reservas&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#como-llegar"&gt;Cómo llegar&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/nav&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="hero" id="inicio"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="hero-bg"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="hero-content"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe" class="hero-logo"/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="hero-lugar"&gt;Pocito · San Juan · Argentina&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;El mejor lugar para&lt;br&gt;&lt;em&gt;tus mejores momentos&lt;/em&gt;&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="hero-sub"&gt;Naturaleza, pileta, salón y magia en el corazón de San Juan&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;a href="#reservas" class="hero-cta"&gt;Consultar disponibilidad&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="intro"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="intro-inner reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="sec-label" style="text-align:center"&gt;Bienvenidos&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="divider"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;Imaginá un refugio donde el susurro de los árboles te envuelve, donde el aroma del pasto recién cortado se mezcla con risas. Un rincón donde la naturaleza te abraza bajo la copa de un ombú centenario.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="intro-tags"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span class="tag"&gt;🏊 Pileta&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span class="tag"&gt;🏛️ Salón climatizado&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span class="tag"&gt;🌳 Parque arbolado&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span class="tag"&gt;🛏️ Alojamiento&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span class="tag"&gt;🍽️ Vajilla incluida&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span class="tag"&gt;👥 Hasta 60 personas&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="features"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="features-inner"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="sec-label reveal"&gt;Lo que incluye&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2 class="sec-title reveal"&gt;Todo lo que necesitás,&lt;br&gt;&lt;em&gt;en un solo lugar&lt;/em&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="features-grid"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="feat-card reveal"&gt;&lt;div class="feat-icon"&gt;🏊&lt;/div&gt;&lt;h3&gt;Pileta&lt;/h3&gt;&lt;p&gt;Refrescate rodeados de verde. Ideal para los días sanjuaninos.&lt;/p&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="feat-card reveal"&gt;&lt;div class="feat-icon"&gt;🏛️&lt;/div&gt;&lt;h3&gt;Salón climatizado&lt;/h3&gt;&lt;p&gt;Capacidad para hasta 60 personas con aire acondicionado frío/calor, luces y sonido.&lt;/p&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="feat-card reveal"&gt;&lt;div class="feat-icon"&gt;🌳&lt;/div&gt;&lt;h3&gt;Parque arbolado&lt;/h3&gt;&lt;p&gt;Ombú e higuera centenarios, palos borrachos, sauces, parras, nogales, cítricos, durazneros, palmeras, pinos, álamos, ceibo y más. Una variedad única que transforma tu estadía en algo especial.&lt;/p&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="feat-card reveal"&gt;&lt;div class="feat-icon"&gt;🍽️&lt;/div&gt;&lt;h3&gt;Vajilla completa&lt;/h3&gt;&lt;p&gt;Vajilla completa para hasta 60 personas, con mantelería y hieleras incluidas.&lt;/p&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="feat-card reveal"&gt;&lt;div class="feat-icon"&gt;🛏️&lt;/div&gt;&lt;h3&gt;Alojamiento&lt;/h3&gt;&lt;p&gt;Dormí en la quinta. Capacidad para hasta 9 personas, ropa de cama incluida.&lt;/p&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="feat-card reveal"&gt;&lt;div class="feat-icon"&gt;📍&lt;/div&gt;&lt;h3&gt;Fácil acceso&lt;/h3&gt;&lt;p&gt;Calle 9 y Callejón Vita (o Callejón Labradores), a solo 10 minutos del centro de San Juan.&lt;/p&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="galeria" id="galeria"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="galeria-inner"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="galeria-header reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;p class="sec-label"&gt;Galería&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;h2 class="sec-title"&gt;La Quinta &lt;em&gt;en imágenes&lt;/em&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;p style="color:#6b6b6b;font-size:.88rem"&gt;Tocá una foto para verla en detalle&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="galeria-grid" id="galeriaGrid"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="precios" id="precios"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="precios-inner"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="sec-label reveal"&gt;Tarifas&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2 class="sec-title reveal"&gt;Elegí tu &lt;em&gt;experiencia&lt;/em&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p style="color:#6b6b6b;font-size:.88rem" class="reveal"&gt;Precios por día completo · Excedente de 60 personas: $5.000 por persona adicional&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="precios-grid"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="precio-card reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Opción Evento&lt;/h3&gt;&lt;p class="desc"&gt;Uso exclusivo como evento, sin alojamiento&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="precio-amount"&gt;&lt;sup&gt;$&lt;/sup&gt;300.000&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;ul class="precio-items"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Horario: 13:00 a 23:00 o 17:00 a 05:00 (10 hs)&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Salón climatizado hasta 60 personas&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Pileta y parque arbolado&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Luces y sonido incluidos (sin DJ)&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Vajilla opcional +$50.000&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Opci%C3%B3n%20Evento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa"&gt;Consultar por WhatsApp&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="precio-card top reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="top-badge"&gt;Más elegido&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Evento + Alojamiento&lt;/h3&gt;&lt;p class="desc"&gt;Fiesta y quédense a dormir&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="precio-amount"&gt;&lt;sup&gt;$&lt;/sup&gt;500.000&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;ul class="precio-items"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Todo lo incluido en Opción Evento&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Alojamiento para hasta 9 personas&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Ropa de cama y vajilla incluidas&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Check-in: 13:00 hs · Check-out: 10:00 hs&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Evento%20%2B%20Alojamiento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa"&gt;Consultar por WhatsApp&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="precio-card reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Alojamiento Familiar&lt;/h3&gt;&lt;p class="desc"&gt;Descanso en familia, sin evento formal&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="precio-amount"&gt;&lt;sup&gt;$&lt;/sup&gt;300.000&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;ul class="precio-items"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Alojamiento para hasta 9 personas&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Hasta 30 invitados a pasar el día sin cargo&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Vajilla incluida para 9 personas&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;li&gt;Check-in: 13:00 hs · Check-out: 10:00 hs&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Alojamiento%20Familiar%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa"&gt;Consultar por WhatsApp&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="reservas" id="reservas"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="reservas-inner reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="sec-label"&gt;Reservas&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2 class="sec-title"&gt;¿Cuándo querés &lt;em&gt;venir?&lt;/em&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;Escribinos por WhatsApp para consultar la disponibilidad de tu fecha. Te respondemos a la brevedad.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;a href="https://wa.me/542645064711?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa-grande"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"&gt;&lt;path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/&gt;&lt;path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.852L.057 23.5a.5.5 0 0 0 .623.607l5.797-1.522A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.52-5.16-1.427l-.36-.214-3.43.9.916-3.35-.235-.375A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>Consultar disponibilidad</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="reservas-nota"&gt;Consultá también por promociones&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="mapa" id="como-llegar"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="mapa-inner reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="sec-label"&gt;Cómo llegar&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2 class="sec-title"&gt;Encontranos &lt;em&gt;fácil&lt;/em&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;Calle 9 y Callejón Vita (o Callejón Labradores), Pocito, San Juan. A solo 10 minutos del centro.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;iframe class="mapa-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348!2d-68.517372!3d-31.646320!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDM4JzQ3LjciUyA2OMKwMzEnMDIuNSJX!5e0!3m2!1ses!2sar!4v1" allowfullscreen loading="lazy"&gt;&lt;/iframe&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;br&gt;&lt;a href="https://maps.google.com/?q=-31.646320,-68.517372" target="_blank" class="btn-maps"&gt;📍 Abrir en Google Maps&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;section class="opiniones"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="opiniones-inner reveal"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p class="sec-label"&gt;Testimonios&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2 class="sec-title"&gt;Lo que dicen nuestros &lt;em&gt;huéspedes&lt;/em&gt;&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;Tu experiencia ayuda a otras familias a elegir Quinta El Ombú del Pepe.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="op-btns"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;a href="https://docs.google.com/forms/d/e/1FAIpQLSfTKb0QluNyyBhWD-pdaUkFMLimtFXq-pjK474SHLQchyoyAw/viewform" target="_blank" class="btn-op verde"&gt;✍️ Dejar mi opinión&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTjZj6rM8TESloNOLLCbp5C_TWTpnSuiein7sgTKaklvOG6BaXT3G0HuAY1zIQxF85kUgw_Wvtx_4BV/pubhtml?gid=111143393&amp;single=true" target="_blank" class="btn-op dorado"&gt;⭐ Ver opiniones&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p1"><span class="s1">&lt;footer&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe"/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p&gt;Calle 9 y Callejón Vita · Pocito · San Juan · Argentina&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p&gt;📞 &lt;a href="https://wa.me/542645064711"&gt;+54 264 506-4711&lt;/a&gt;&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="footer-social"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;a href="https://www.instagram.com/quinta_el_ombu" target="_blank"&gt;Instagram&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;a href="https://www.facebook.com/share/1DSutPTNYe/" target="_blank"&gt;Facebook&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p style="font-size:.72rem;margin-top:1rem;opacity:.5"&gt;© 2025 Quinta El Ombú del Pepe&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/footer&gt;</span></p>
+<p class="p1"><span class="s1">&lt;a href="https://wa.me/542645064711?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="wa-float"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"&gt;&lt;path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/&gt;&lt;path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.852L.057 23.5a.5.5 0 0 0 .623.607l5.797-1.522A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.52-5.16-1.427l-.36-.214-3.43.9.916-3.35-.235-.375A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1">&lt;div class="lightbox" id="lightbox" onclick="closeLB()"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;button class="lb-close" onclick="closeLB()"&gt;✕&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;img id="lbImg" src="" alt=""/&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1">window.addEventListener('scroll',()=&gt;{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY&gt;50)});</span></p>
+<p class="p1"><span class="s1">const grid=document.getElementById('galeriaGrid');</span></p>
+<p class="p1"><span class="s1">for(let i=1;i&lt;=23;i++){const d=document.createElement('div');d.className='gal-item';const s=`/galeria/${i}.jpg`;d.innerHTML=`&lt;img src="${s}" alt="foto ${i}" loading="lazy" onclick="openLB('${s}')"/&gt;`;grid.appendChild(d)}</span></p>
+<p class="p1"><span class="s1">function openLB(s){document.getElementById('lbImg').src=s;document.getElementById('lightbox').classList.add('active')}</span></p>
+<p class="p1"><span class="s1">function closeLB(){document.getElementById('lightbox').classList.remove('active')}</span></p>
+<p class="p1"><span class="s1">const obs=new IntersectionObserver(e=&gt;{e.forEach(x=&gt;{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1});</span></p>
+<p class="p1"><span class="s1">document.querySelectorAll('.reveal').forEach(el=&gt;obs.observe(el));</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;s</span></p>
 </body>
 </html>
