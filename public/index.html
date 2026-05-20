@@ -263,7 +263,7 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
 <script>
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
 const grid=document.getElementById('galeriaGrid');
-for(let i=1;i<=23;i++){const d=document.createElement('div');d.className='gal-item';const s=`/galeria/${i}.jpg`;d.innerHTML=`<img src="${s}" alt="foto ${i}" loading="lazy" onclick="openLB('${s}')"/>`;grid.appendChild(d)}
+for(let i=1;i<=28;i++){const d=document.createElement('div');d.className='gal-item';const s=`/galeria/${i}.jpg`;d.innerHTML=`<img src="${s}" alt="foto ${i}" loading="lazy" onclick="openLB('${s}')"/>`;grid.appendChild(d)}
 function openLB(s){document.getElementById('lbImg').src=s;document.getElementById('lightbox').classList.add('active')}
 function closeLB(){document.getElementById('lightbox').classList.remove('active')}
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1});
