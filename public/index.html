@@ -95,6 +95,16 @@ section{padding:5.5rem 1.5rem}
 .btn-op.verde:hover{background:#3a6b35;color:white}
 .btn-op.dorado{background:#fdf3e3;color:#c8922a}
 .btn-op.dorado:hover{background:#c8922a;color:white}
+.faq{background:#fdf6ec}
+.faq-inner{max-width:780px;margin:0 auto}
+.faq-list{margin-top:2.5rem}
+.faq-item{border-bottom:1px solid #e8ddd0}
+.faq-item summary{font-family:'Playfair Display',serif;font-size:1.05rem;color:#2c2c2c;cursor:pointer;padding:1.3rem 2.5rem 1.3rem 0;list-style:none;position:relative;transition:color .2s}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:1.5rem;font-weight:300;color:#3a6b35;transition:transform .3s,color .2s;line-height:1}
+.faq-item[open] summary{color:#3a6b35}
+.faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq-item p{font-size:.9rem;color:#6b6b6b;line-height:1.8;padding:.2rem 0 1.4rem}
 footer{background:#3a6b35;color:rgba(255,255,255,.9);padding:3rem 1.5rem;text-align:center}
 footer img{height:70px;width:auto;margin-bottom:1.2rem}
 footer p{font-size:.84rem;line-height:1.8;color:rgba(255,255,255,.75)}
@@ -234,6 +244,39 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
     <p>Calle 9 y Callejón Vita (o Callejón Labradores), Pocito, San Juan. A solo 10 minutos del centro.</p>
     <iframe class="mapa-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348!2d-68.517372!3d-31.646320!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDM4JzQ3LjciUyA2OMKwMzEnMDIuNSJX!5e0!3m2!1ses!2sar!4v1" allowfullscreen loading="lazy"></iframe>
     <br><a href="https://maps.google.com/?q=-31.646320,-68.517372" target="_blank" class="btn-maps">📍 Abrir en Google Maps</a>
+  </div>
+</section>
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <p class="sec-label reveal" style="text-align:center">FAQ</p>
+    <h2 class="sec-title reveal" style="text-align:center">Preguntas <em>frecuentes</em></h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>¿Cómo reservo una fecha?</summary>
+        <p>Escribinos por WhatsApp con tu fecha y el tipo de evento. Si la fecha está disponible, coordinamos el pago de una seña para confirmar la reserva.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿Cuántas personas pueden venir?</summary>
+        <p>El salón climatizado tiene capacidad para hasta 60 personas. Si el grupo es más grande, se aplica un adicional de $5.000 por persona extra.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿Cuáles son los horarios del evento?</summary>
+        <p>Podés elegir entre dos turnos de 10 horas: de 13:00 a 23:00 hs, o de 17:00 a 05:00 hs. El horario se coordina al momento de la reserva.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿Puedo quedarme a dormir en la quinta?</summary>
+        <p>Sí. Las opciones <em>Evento + Alojamiento</em> y <em>Alojamiento Familiar</em> incluyen alojamiento para hasta 9 personas con ropa de cama incluida. El check-in es a las 13:00 hs y el check-out a las 10:00 hs del día siguiente.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿El salón incluye sonido e iluminación?</summary>
+        <p>Sí, luces y sonido están incluidos en todas las opciones de evento. No incluye DJ: podés conectar tu música o contratar uno por tu cuenta.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>¿La vajilla está incluida?</summary>
+        <p>En <em>Alojamiento Familiar</em> la vajilla para 9 personas está incluida. En <em>Opción Evento</em> la vajilla completa para hasta 60 personas es opcional con un costo adicional de $50.000. En <em>Evento + Alojamiento</em> la vajilla completa está incluida.</p>
+      </details>
+    </div>
   </div>
 </section>
 <section class="opiniones">
