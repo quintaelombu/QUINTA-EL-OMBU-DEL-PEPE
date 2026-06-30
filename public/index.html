@@ -102,8 +102,12 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
 .footer-social{display:flex;gap:1.5rem;justify-content:center;margin:1.2rem 0;flex-wrap:wrap}
 .footer-social a{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.35);padding:.4rem 1.2rem;border-radius:50px;transition:all .2s}
 .footer-social a:hover{background:rgba(255,255,255,.15);border-color:white;text-decoration:none}
-.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:62px;height:62px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;transition:transform .3s}
-.wa-float:hover{transform:scale(1.1)}
+@keyframes wa-pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 20px rgba(37,211,102,.5),0 0 0 10px rgba(37,211,102,.15)}}
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;width:62px;height:62px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);text-decoration:none;transition:transform .3s;animation:wa-pulse 2.5s ease-in-out infinite}
+.wa-float:hover{transform:scale(1.1);animation:none}
+.wa-float::after{content:'Consultá por WhatsApp';position:absolute;right:74px;background:rgba(0,0,0,.72);color:#fff;font-size:.75rem;font-weight:600;white-space:nowrap;padding:.35rem .8rem;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .2s}
+.wa-float:hover::after{opacity:1}
+@media(max-width:640px){.wa-float::after{display:none}}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
@@ -183,7 +187,7 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
           <li>Luces y sonido incluidos (sin DJ)</li>
           <li>Vajilla opcional +$50.000</li>
         </ul>
-        <a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Opci%C3%B3n%20Evento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
+        <a href="https://wa.me/5492645064711?text=Hola%2C%20consulto%20por%20Opci%C3%B3n%20Evento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
       </div>
       <div class="precio-card top reveal">
         <div class="top-badge">Más elegido</div>
@@ -195,7 +199,7 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
           <li>Ropa de cama y vajilla incluidas</li>
           <li>Check-in: 13:00 hs · Check-out: 10:00 hs</li>
         </ul>
-        <a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Evento%20%2B%20Alojamiento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
+        <a href="https://wa.me/5492645064711?text=Hola%2C%20consulto%20por%20Evento%20%2B%20Alojamiento%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
       </div>
       <div class="precio-card reveal">
         <h3>Alojamiento Familiar</h3><p class="desc">Descanso en familia, sin evento formal</p>
@@ -206,7 +210,7 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
           <li>Vajilla incluida para 9 personas</li>
           <li>Check-in: 13:00 hs · Check-out: 10:00 hs</li>
         </ul>
-        <a href="https://wa.me/542645064711?text=Hola%2C%20consulto%20por%20Alojamiento%20Familiar%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
+        <a href="https://wa.me/5492645064711?text=Hola%2C%20consulto%20por%20Alojamiento%20Familiar%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa">Consultar por WhatsApp</a>
       </div>
     </div>
   </div>
@@ -216,7 +220,7 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
     <p class="sec-label">Reservas</p>
     <h2 class="sec-title">¿Cuándo querés <em>venir?</em></h2>
     <p>Escribinos por WhatsApp para consultar la disponibilidad de tu fecha. Te respondemos a la brevedad.</p>
-    <a href="https://wa.me/542645064711?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa-grande">
+    <a href="https://wa.me/5492645064711?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="btn-wa-grande">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.852L.057 23.5a.5.5 0 0 0 .623.607l5.797-1.522A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.52-5.16-1.427l-.36-.214-3.43.9.916-3.35-.235-.375A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Consultar disponibilidad
     </a>
@@ -246,14 +250,14 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
 <footer>
   <img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe"/>
   <p>Calle 9 y Callejón Vita · Pocito · San Juan · Argentina</p>
-  <p>📞 <a href="https://wa.me/542645064711">+54 264 506-4711</a></p>
+  <p>📞 <a href="https://wa.me/5492645064711">+54 264 506-4711</a></p>
   <div class="footer-social">
     <a href="https://www.instagram.com/quinta_el_ombu" target="_blank">Instagram</a>
     <a href="https://www.facebook.com/share/1DSutPTNYe/" target="_blank">Facebook</a>
   </div>
   <p style="font-size:.72rem;margin-top:1rem;opacity:.5">© 2025 Quinta El Ombú del Pepe</p>
 </footer>
-<a href="https://wa.me/542645064711?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="wa-float">
+<a href="https://wa.me/5492645064711?text=Hola!%20Quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="wa-float" aria-label="Consultá por WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.852L.057 23.5a.5.5 0 0 0 .623.607l5.797-1.522A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.52-5.16-1.427l-.36-.214-3.43.9.916-3.35-.235-.375A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
 <div class="lightbox" id="lightbox" onclick="closeLB()">
