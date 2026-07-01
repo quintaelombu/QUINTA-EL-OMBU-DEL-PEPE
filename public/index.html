@@ -15,7 +15,18 @@ nav.scrolled{background:rgba(253,246,236,.96);backdrop-filter:blur(8px);box-shad
 .nav-links{display:flex;gap:1.8rem;list-style:none}
 .nav-links a{color:#2c2c2c;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
 .nav-links a:hover{color:#3a6b35}
-@media(max-width:640px){.nav-links{display:none}}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:101}
+.nav-burger span{display:block;width:24px;height:2px;background:#2c2c2c;border-radius:2px;transition:transform .3s,opacity .3s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:640px){
+  .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(253,246,236,.97);backdrop-filter:blur(8px);padding:.5rem 0 1rem;box-shadow:0 8px 24px rgba(0,0,0,.08);gap:0}
+  .nav-links.open{display:flex}
+  .nav-links li{text-align:center}
+  .nav-links a{display:block;padding:.85rem 2rem;font-size:.88rem;color:#2c2c2c}
+  .nav-burger{display:flex}
+}
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,246,236,.1) 0%,rgba(253,246,236,.5) 100%),url("/portada.jpg") center top/cover no-repeat;animation:slowzoom 18s ease-in-out infinite alternate}
 @keyframes slowzoom{from{transform:scale(1)}to{transform:scale(1.07)}}
@@ -125,13 +136,14 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
 <body>
 <nav id="navbar">
   <div class="nav-logo"><img src="/quinta_ombu_logo_blanco.png" alt="Quinta El Ombú del Pepe"/></div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#galeria">Galería</a></li>
     <li><a href="#precios">Precios</a></li>
     <li><a href="#reservas">Reservas</a></li>
     <li><a href="#como-llegar">Cómo llegar</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Menú"><span></span><span></span><span></span></button>
 </nav>
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
@@ -316,6 +328,9 @@ function openLB(s){document.getElementById('lbImg').src=s;document.getElementByI
 function closeLB(){document.getElementById('lightbox').classList.remove('active')}
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const burger=document.getElementById('navBurger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open')});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');navLinks.classList.remove('open')}));
 </script>
 </body>
 </html>
