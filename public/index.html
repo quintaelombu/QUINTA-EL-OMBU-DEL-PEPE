@@ -63,6 +63,7 @@
   ]
 }
 </script>
+<link rel="icon" type="image/png" href="/quinta_ombu_logo_blanco.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -382,7 +383,7 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
 <script>
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
 const grid=document.getElementById('galeriaGrid');
-for(let i=1;i<=28;i++){const d=document.createElement('div');d.className='gal-item';const s=`/galeria/${i}.jpg`;d.innerHTML=`<img src="${s}" alt="foto ${i}" loading="lazy" onclick="openLB('${s}')"/>`;grid.appendChild(d)}
+for(let i=1;i<=28;i++){const d=document.createElement('div');d.className='gal-item';const s=`/galeria/${i}.jpg`;d.innerHTML=`<img src="${s}" alt="Quinta El Ombú del Pepe - galería foto ${i}" loading="lazy" onclick="openLB('${s}')"/>`;grid.appendChild(d)}
 function openLB(s){document.getElementById('lbImg').src=s;document.getElementById('lightbox').classList.add('active')}
 function closeLB(){document.getElementById('lightbox').classList.remove('active')}
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1});
