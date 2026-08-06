@@ -189,6 +189,20 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
 .wa-float::after{content:'Consultá por WhatsApp';position:absolute;right:74px;background:rgba(0,0,0,.72);color:#fff;font-size:.75rem;font-weight:600;white-space:nowrap;padding:.35rem .8rem;border-radius:6px;opacity:0;pointer-events:none;transition:opacity .2s}
 .wa-float:hover::after{opacity:1}
 @media(max-width:640px){.wa-float::after{display:none}}
+.wifi-float{position:fixed;bottom:1.8rem;right:5.6rem;z-index:200;width:52px;height:52px;border-radius:50%;background:#3a6b35;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(58,107,53,.45);border:none;cursor:pointer;transition:transform .3s}
+.wifi-float:hover{transform:scale(1.1)}
+.wifi-float svg{width:24px;height:24px;fill:white}
+.wifi-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;align-items:center;justify-content:center;padding:1.2rem}
+.wifi-modal.active{display:flex}
+.wifi-card{background:white;border-radius:16px;padding:2rem 1.8rem;max-width:340px;width:100%;text-align:center;position:relative}
+.wifi-card .lb-close{position:absolute;top:.6rem;right:.8rem;color:#999;font-size:1.6rem}
+.wifi-card h3{font-family:'Playfair Display',serif;color:#3a6b35;font-size:1.3rem;margin-bottom:1.4rem}
+.wifi-row{margin-bottom:1.1rem;text-align:left}
+.wifi-row label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#999;margin-bottom:.3rem}
+.wifi-value{display:flex;align-items:center;justify-content:space-between;gap:.6rem;background:#f4f4f0;border-radius:10px;padding:.7rem .9rem;font-family:'Nunito',sans-serif;font-weight:600;color:#333;font-size:.95rem}
+.wifi-copy{background:#3a6b35;color:white;border:none;border-radius:8px;padding:.4rem .7rem;font-size:.75rem;font-weight:600;cursor:pointer;flex-shrink:0;transition:background .2s}
+.wifi-copy:hover{background:#2d5329}
+.wifi-copy.copied{background:#c8922a}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
@@ -379,6 +393,23 @@ footer a{color:rgba(255,255,255,.9);text-decoration:none}
 <a href="https://wa.me/5492645064711?text=Hola!%20Quiero%20consultar%20disponibilidad%20en%20Quinta%20El%20Omb%C3%BA%20del%20Pepe" target="_blank" class="wa-float" aria-label="Consultá por WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.522 5.852L.057 23.5a.5.5 0 0 0 .623.607l5.797-1.522A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.52-5.16-1.427l-.36-.214-3.43.9.916-3.35-.235-.375A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
+<button class="wifi-float" aria-label="Ver WiFi" onclick="document.getElementById('wifiModal').classList.add('active')">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20.5a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2zM8.2 14.8a5.4 5.4 0 0 1 7.6 0l-1.9 1.9a2.7 2.7 0 0 0-3.8 0l-1.9-1.9zM4.8 11.4a10.2 10.2 0 0 1 14.4 0l-1.9 1.9a7.6 7.6 0 0 0-10.6 0l-1.9-1.9zM1.4 8a15 15 0 0 1 21.2 0l-1.9 1.9a12.4 12.4 0 0 0-17.4 0L1.4 8z"/></svg>
+</button>
+<div class="wifi-modal" id="wifiModal" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="wifi-card">
+    <button class="lb-close" onclick="document.getElementById('wifiModal').classList.remove('active')">✕</button>
+    <h3>📶 WiFi de la Quinta</h3>
+    <div class="wifi-row">
+      <label>Red</label>
+      <div class="wifi-value"><span id="wifiSsid">El Ombú del Pepe</span><button class="wifi-copy" onclick="copyWifi('wifiSsid',this)">Copiar</button></div>
+    </div>
+    <div class="wifi-row">
+      <label>Contraseña</label>
+      <div class="wifi-value"><span id="wifiPass">Quintaelombu</span><button class="wifi-copy" onclick="copyWifi('wifiPass',this)">Copiar</button></div>
+    </div>
+  </div>
+</div>
 <div class="lightbox" id="lightbox" onclick="closeLB()">
   <button class="lb-close" onclick="closeLB()">✕</button>
   <img id="lbImg" src="" alt=""/>
@@ -394,6 +425,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 const burger=document.getElementById('navBurger'),navLinks=document.getElementById('navLinks');
 burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open')});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');navLinks.classList.remove('open')}));
+function copyWifi(id,btn){const text=document.getElementById(id).textContent;navigator.clipboard.writeText(text).then(()=>{const old=btn.textContent;btn.textContent='✓ Copiado';btn.classList.add('copied');setTimeout(()=>{btn.textContent=old;btn.classList.remove('copied')},1800)})}
 </script>
 </body>
 </html>
